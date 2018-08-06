@@ -2,7 +2,7 @@ UI /utils/vesamenu.c32
 DEFAULT local
 TIMEOUT 30
 
-MENU TITLE BgLUG PXE Boot
+MENU TITLE Scavia PXE Boot - F.Cermelli
 MENU BACKGROUND /utils/background.png
 
 LABEL local
@@ -13,109 +13,24 @@ LABEL local
 MENU SEPARATOR
 
 MENU BEGIN
-MENU TITLE Installa Ubuntu 16.04
-
-LABEL client-16.04
-	MENU LABEL ^64 BIT
-	LINUX  /1604/linux
-	INITRD /1604/initrd.gz
-	APPEND vga=normal auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed -- quiet
-
-MENU SEPARATOR
-
-LABEL return-client
-	MENU LABEL ^Torna indietro
-	MENU EXIT
-MENU END
-
-
-MENU BEGIN
 MENU TITLE Installa nuova macchina CLIENT
 
 LABEL client-32bit
 	MENU LABEL ^32 bit
 	LINUX	/ubuntu/14.04/i386/linux
 	INITRD	/ubuntu/14.04/i386/initrd.gz
-	APPEND	vga=normal auto=true hostname=kickseed url=http://server.scavia.lab/ks/preseed/client-trusty.seed -- quiet
+	APPEND	vga=normal auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed -- quiet
 	
 LABEL client-64bit
 	MENU LABEL ^64 bit
 	LINUX	/ubuntu/14.04/amd64/linux
 	INITRD	/ubuntu/14.04/amd64/initrd.gz
-	APPEND	vga=normal auto=true hostname=kickseed url=http://server.scavia.lab/ks/preseed/client-trusty.seed -- quiet
+	APPEND	vga=normal auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed -- quiet
 
 MENU SEPARATOR
 
 LABEL return-client
-	MENU LABEL ^Torna al menu principale
-	MENU EXIT
-MENU END
-
-MENU BEGIN
-MENU TITLE Installa nuova macchina DOCENTI
-
-LABEL docenti-32bit
-	MENU LABEL ^32 bit
-	LINUX	/ubuntu/14.04/i386/linux
-	INITRD	/ubuntu/14.04/i386/initrd.gz
-	APPEND	vga=normal auto=true hostname=kickseed url=http://server.scavia.lab/ks/preseed/docenti-trusty.seed -- quiet
-
-LABEL docenti-64bit
-	MENU LABEL ^64 bit
-	LINUX	/ubuntu/14.04/amd64/linux
-	INITRD	/ubuntu/14.04/amd64/initrd.gz
-	APPEND	vga=normal auto=true hostname=kickseed url=http://server.scavia.lab/ks/preseed/docenti-trusty.seed -- quiet
-	
-MENU SEPARATOR
-
-LABEL return-docenti
-	MENU LABEL ^Torna al menu principale
-	MENU EXIT
-MENU END
-
-MENU BEGIN
-MENU TITLE Installa nuova macchina AULA
-
-LABEL aula-32bit
-	MENU LABEL ^32 bit
-	LINUX	/ubuntu/14.04/i386/linux
-	INITRD	/ubuntu/14.04/i386/initrd.gz
-	APPEND	vga=normal auto=true hostname=kickseed url=http://server.scavia.lab/ks/preseed/aula-trusty.seed -- quiet
-
-LABEL aula-64bit
-	MENU LABEL ^64 bit
-	LINUX	/ubuntu/14.04/amd64/linux
-	INITRD	/ubuntu/14.04/amd64/initrd.gz
-	APPEND	vga=normal auto=true hostname=kickseed url=http://server.scavia.lab/ks/preseed/aula-trusty.seed -- quiet
-
-MENU SEPARATOR
-
-LABEL return-aula
-	MENU LABEL ^Torna al menu principale
-	MENU EXIT
-MENU END
-
-MENU SEPARATOR
-
-MENU BEGIN
-MENU TITLE Edubuntu Classica
-
-LABEL edubuntu-32
-	MENU LABEL Installa Edubuntu 32 bit
-	LINUX	/ubuntu/14.04/i386/linux
-	INITRD	/ubuntu/14.04/i386/initrd.gz
-	APPEND	auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed quiet
-
-LABEL edubuntu-64
-	MENU LABEL Installa Edubuntu 64 bit
-	LINUX	/ubuntu/14.04/amd64/linux
-	INITRD	/ubuntu/14.04/amd64/initrd.gz
-	APPEND	auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed quiet
-	
-MENU SEPARATOR
-
-LABEL return-edu
-	MENU LABEL ^Torna al menu principale
+	MENU LABEL ^Torna indietro
 	MENU EXIT
 MENU END
 
