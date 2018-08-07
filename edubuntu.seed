@@ -12,10 +12,6 @@ d-i	keyboard-configuration/layoutcode 	string it
 # Network
 d-i	netcfg/choose_interface 		select auto
 
-# Adjust the default hostname.
-# Not specifying the hostname should ask for it at install-time.
-#d-i	netcfg/get_hostname	string edubuntu
-#d-i	netcfg/get_hostname	seen false
 # Enabling non-free firmware
 d-i	hw-detect/load_firmware			boolean true
 
@@ -37,16 +33,6 @@ d-i	apt-setup/restricted			boolean true
 d-i	apt-setup/universe			boolean true
 d-i 	apt-setup/multiverse			boolean true
 
-# Setup and enable libreoffice PPA
-#d-i	apt-setup/local0/repository		string http://{{ execpath }}ppa.launchpad.net/libreoffice/ppa/ubuntu trusty main
-#d-i 	apt-setup/local0/comment		string LibreOffice Official PPA
-#d-i 	apt-setup/local0/key 			string http://keyserver.ubuntu.com:11371/pks/lookup?search=0x36E81C9267FD1383FCC4490983FBA1751378B444&op=get
-
-# Setup and enable ansible PPA
-#d-i	apt-setup/local1/repository		string http://{{ execpath }}ppa.launchpad.net/ansible/ansible/ubuntu trusty main
-#d-i	apt-setup/local1/comment		string Ansible Official PPA
-#d-i	apt-setup/local1/key			string http://keyserver.ubuntu.com:11371/pks/lookup?search=0x6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367&op=get	
-
 # Time and date
 d-i	clock-setup/utc				boolean true
 d-i 	time/zone				string Europe/Rome
@@ -67,9 +53,6 @@ d-i	partman/confirm_nooverwrite		boolean true
 d-i	partman/mount_style			select uuid
 
 # user set up
-d-i passwd/root-login                           boolean true
-d-i passwd/root-password                        password ** 
-d-i passwd/root-password-again                  password ** 
 d-i passwd/user-fullname		 	string docente
 d-i passwd/username 				string docente
 d-i passwd/user-password 			password **
@@ -110,13 +93,13 @@ d-i	pkgsel/language-pack-patterns		string language-pack-gnome-$LL language-pack-
 d-i	pkgsel/include				string openssh-server libreoffice vim screen git curl cifs-utils ubuntu-edu-secondary libnss-myhostname geogebra geogebra-gnome sysv-rc-conf 
 
 # Post installation tasks
-# Update system
+# Update system #in target do-release-upgrade -y;
 d-i 	preseed/late_command string in-target apt-get -y upgrade; \
 	in-target apt-get -y dist-upgrade; \
 	in-target apt-get -y purge unity-webapps-common zeitgeist-core zeitgeist-datahub; \
 	in-target apt-get -y autoremove; \
-	in-target sed -i'' -e 's/ubuntu/gnome-fallback/g' /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
-        in-target /bin/bash -c "/usr/bin/curl -sSL4 http://server.scavia.lab/ks/preseed/postseed.sh | /bin/bash >/root/postseed.log 2>&1";
+	in-target sed -i'' -e 's/ubuntu/gnome-fallback/g' /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf; \
+	in-target /bin/bash -c "/usr/bin/curl -sSL4 http://server.scavia.lab/ks/preseed/postseed.sh | /bin/bash > /root/postseed.log 2>&1";
 # Grub installation on MBR
 d-i	grub-installer/only_debian		boolean true
 d-i	grub-installer/bootdev			string /dev/sda

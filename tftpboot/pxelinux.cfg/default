@@ -19,13 +19,13 @@ LABEL client-32bit
 	MENU LABEL ^32 bit
 	LINUX	/ubuntu/14.04/i386/linux
 	INITRD	/ubuntu/14.04/i386/initrd.gz
-	APPEND	vga=normal auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed -- quiet
+	APPEND	vga=normal hostname=registro auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed -- quiet
 	
 LABEL client-64bit
 	MENU LABEL ^64 bit
 	LINUX	/ubuntu/14.04/amd64/linux
 	INITRD	/ubuntu/14.04/amd64/initrd.gz
-	APPEND	vga=normal auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed -- quiet
+	APPEND	vga=normal hostname=registro auto=true url=http://server.scavia.lab/ks/preseed/edubuntu.seed -- quiet
 
 MENU SEPARATOR
 
